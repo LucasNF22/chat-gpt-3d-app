@@ -12,13 +12,17 @@ export const Shirt = () => {
 
     const snap = useSnapshot(state);
     const { nodes, materials } = useGLTF('/shirt_baked.glb');
+    
 
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
+    
 
     useFrame((state, delta) => easing.dampC( materials.lambert1.color, snap.color, 0.25, delta ))
 
     const stateString = JSON.stringify(snap);
+
+    materials.lambert1.map = logoTexture
 
     return (
         <group key={stateString}>
