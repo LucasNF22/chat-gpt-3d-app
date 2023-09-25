@@ -22,7 +22,11 @@ export const Shirt = () => {
 
     const stateString = JSON.stringify(snap);
 
-    materials.lambert1.map = logoTexture
+    // materials.lambert1.map = logoTexture
+
+    let mtl = materials.lambert1.clone()
+
+    mtl.map = "/tela.jpg"
 
     return (
         <group key={stateString}>
